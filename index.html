@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rangan Ghosh | Personal Portfolio</title>
+
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="#home" class="brand-link">
+                    <div class="logo-container">
+                        <img src="logo.png" alt="Rangan Ghosh Logo" class="nav-logo">
+                    </div>
+                    <span>My Portfolio</span>
+                </a>
+            </div>
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+                    <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+                    <li class="nav-item"><a href="#work" class="nav-link">Work</a></li>
+                    <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Rangan Ghosh</h1>
+                <h2 class="hero-subtitle">Frontend Developer, UI/UX Designer and a Coding Enthusiast</h2>
+                <p class="hero-description">I try to create beautiful, functional websites with clean code and user-centered design principles.</p>
+                <div class="hero-buttons">
+                    <a href="#work" class="btn btn-primary">View My Work</a>
+                    <a href="#" class="btn btn-secondary">Download Resume</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-container circular">
+                    <img src="Pic 5.jpg" alt="Rangan Ghosh" class="profile-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-container oval">
+                        <img src="Pic 1.jpg" alt="Rangan Ghosh" class="profile-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p>Hello! I'm Rangan, a passionate frontend developer with 3 years of experience creating responsive and user-friendly websites. I specialize in HTML, CSS, JavaScript, and React.</p>
+                    <p>My approach combines technical expertise with an eye for design, ensuring that every project I work on is both functional and visually appealing.</p>
+                    <p>When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or hiking in the mountains.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Frontend Development</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fab fa-html5"></i> HTML/CSS</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fab fa-js-square"></i> JavaScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fab fa-react"></i> React</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="95"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-palette"></i> Design & Tools</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fas fa-pencil-ruler"></i> UI/UX Design</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fab fa-figma"></i> Figma</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fab fa-git-alt"></i> Git</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fas fa-cube"></i> Webpack</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Programming Languages</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fab fa-java"></i> Java</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fab fa-python"></i> Python</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fas fa-copyright"></i> C++</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name"><i class="fab fa-microsoft"></i> C#</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-level="65"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2023</div>
+                    <div class="timeline-content">
+                        <h3>ICSE, Middle School, Senior Secondary</h3>
+                        <h4>Methodist School, Dankuni, West Bengal</h4>
+                        <p>Graduated with 97% marks</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - 2025</div>
+                    <div class="timeline-content">
+                        <h3>AISSCE, High School, Higher Secondary</h3>
+                        <h4>HM Education Centre, Hindmotor, West Bengal</h4>
+                        <p>Graduated with 96% marks....with subjects of P(Physics), C(Chemistry), M(Mathematics)...got 99 in Computer Science</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025 - 2029</div>
+                    <div class="timeline-content">
+                        <h3>BS in Computer Science with integrated AI and Data Science</h3>
+                        <h4>IIT Madras, Scaler School of Technology, Bangaluru</h4>
+                        <p>Intensive program covering modern frontend frameworks, responsive design, and best practices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="work">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Website</h3>
+                        <p>A fully responsive e-commerce platform built with React and Node.js.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Task Management App</h3>
+                        <p>A mobile-first task management application with drag-and-drop functionality.</p>
+                        <div class="project-tech">
+                            <span>Vue.js</span>
+                            <span>Firebase</span>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Analytics Dashboard</h3>
+                        <p>A data visualization dashboard for business metrics with interactive charts.</p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>D3.js</span>
+                            <span>Python</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Calculator Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Advanced Calculator</h3>
+                        <p>A feature-rich calculator with scientific functions, history tracking, and responsive design.</p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Photo Gallery Project -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Interactive Photo Gallery</h3>
+                        <p>A responsive image gallery with filtering, lightbox preview, and smooth animations.</p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>CSS Grid</span>
+                            <span>Lightbox</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">20XX - 20XX</div>
+                    <div class="timeline-content">
+                        <h3>Frontend Developer</h3>
+                        <h4>Tech Solutions Inc.</h4>
+                        <ul>
+                            <li>Developed and maintained responsive web applications using React and TypeScript</li>
+                            <li>Collaborated with UX/UI designers to implement pixel-perfect designs</li>
+                            <li>Optimized application performance, reducing load times by 40%</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">20XX - 20XX</div>
+                    <div class="timeline-content">
+                        <h3>Junior Web Developer</h3>
+                        <h4>Digital Agency Co.</h4>
+                        <ul>
+                            <li>Built custom WordPress themes and plugins for various clients</li>
+                            <li>Implemented responsive designs for mobile and tablet devices</li>
+                            <li>Assisted in website maintenance and updates</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>ranganghosh777@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 8240489519</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Kolkata, India</span>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" target="_blank" class="btn btn-social"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank" class="btn btn-social"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" class="btn btn-social"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank" class="btn btn-social"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="10" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Rangan Ghosh. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactive elements -->
+    <script>
+          // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress');
+        
+        const animateSkillBars = () => {
+            skillBars.forEach(bar => {
+                const level = bar.getAttribute('data-level');
+                const rect = bar.getBoundingClientRect();
+                
+                // If the skill bar is in the viewport
+                if(rect.top < window.innerHeight && rect.bottom >= 0) {
+                    bar.style.width = level + '%';
+                }
+            });
+        };
+        
+        // Initial check and then on scroll
+        animateSkillBars();
+        window.addEventListener('scroll', animateSkillBars);
+    </script>
+</body>
+</html>

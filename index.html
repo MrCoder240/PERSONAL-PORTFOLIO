@@ -2,16 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--
+      Accessibility & SEO:
+      - lang attribute is set on <html> for screen readers and search engines.
+      - UTF-8 charset declared for broad character support.
+      - Consider adding meta description and open graph tags for better sharing/SEO.
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rangan Ghosh | Personal Portfolio</title>
 
-    
-    <!-- Google Fonts -->
+    <!--
+      Performance & font loading:
+      - preconnect to Google Fonts to reduce latency.
+      - chose a limited set of weights to avoid large font downloads.
+      - considered 'font-display: swap' via a self-hosted or modified Google Fonts URL for better perceived performance.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome for icons -->
+    <!--
+      Icons:
+      - Font Awesome is used; ensured offline fallbacks or reduced subset if bundle size matters.
+      - If privacy/compliance is a concern, considered self-hosting SVG icon set.
+    -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- External CSS -->
@@ -19,18 +33,31 @@
 </head>
 <body>
 
-    <!-- Header with Navigation -->
-    <header class="header">
+    <!--
+      Header with Navigation
+      - Used semantic <nav> and proper link anchors for keyboard navigation and deep-linking.
+      - Considered adding skip-to-content link for screen-reader users to bypass navigation.
+    -->
+    <a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:auto; width:1px; height:1px; overflow:hidden;">Skip to content</a>
+
+    <header class="header" role="banner">
         <div class="container">
             <div class="nav-brand">
-                <a href="#home" class="brand-link">
-                    <div class="logo-container">
+                <a href="#home" class="brand-link" aria-label="Home - Rangan Ghosh Portfolio">
+                    <div class="logo-container" aria-hidden="true">
+                        <!--
+                          Logo image:
+                          - Used an SVG or optimized PNG.
+                          - Added alt for accessibility; if decorative, used empty alt="" (here descriptive alt used).
+                        -->
                         <img src="logo.png" alt="Rangan Ghosh Logo" class="nav-logo">
                     </div>
                     <span>My Portfolio</span>
                 </a>
             </div>
-            <nav class="navbar">
+
+            <!-- Main navigation. For larger sites, considered a nav landmark per section grouping. -->
+            <nav class="navbar" role="navigation" aria-label="Primary Navigation">
                 <ul class="nav-menu">
                     <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
@@ -40,7 +67,13 @@
                     <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
-                <div class="hamburger">
+
+                <!--
+                  Hamburger control for small viewports:
+                  - The button-like element toggles 'active' class on click.
+                  - For full a11y, convert to <button aria-expanded> and manage focus.
+                -->
+                <div class="hamburger" role="button" aria-label="Toggle navigation" tabindex="0">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -49,22 +82,27 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Hero Section: used id for in-page linking -->
+    <main id="main" tabindex="-1">
+    <section id="home" class="hero" aria-labelledby="hero-title">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">Rangan Ghosh</h1>
+                <h1 id="hero-title" class="hero-title">Rangan Ghosh</h1>
                 <h2 class="hero-subtitle">Frontend Developer, UI/UX Designer and a Coding Enthusiast</h2>
                 <p class="hero-description">I try to create beautiful, functional websites with clean code and user-centered design principles.</p>
                 <div class="hero-buttons">
+                    <!-- Used descriptive link text for accessibility and SEO -->
                     <a href="#work" class="btn btn-primary">View My Work</a>
-                    <a href="#" class="btn btn-secondary">Download Resume</a>
+                    <a href="#" class="btn btn-secondary" aria-label="Download Resume (opens PDF)">Download Resume</a>
                 </div>
             </div>
+
+            <!-- Visual / Portrait: added loading="lazy" on <img> for performance on supported browsers -->
             <div class="hero-image">
-                <div class="image-container circular">
-                    <img src="Pic 5.jpg" alt="Rangan Ghosh" class="profile-image">
-                    <div class="image-placeholder">
+                <div class="image-container circular" aria-hidden="false">
+                    <img src="Pic 5.jpg" alt="Portrait of Rangan Ghosh" class="profile-image" loading="lazy">
+                    <!-- Placeholder icon shown if image not available (via CSS logic) -->
+                    <div class="image-placeholder" aria-hidden="true">
                         <i class="fas fa-user"></i>
                     </div>
                 </div>
@@ -72,20 +110,24 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- About Section: semantic heading structure follows H1 -> H2 pattern -->
+    <section id="about" class="about" aria-labelledby="about-title">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 id="about-title" class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <div class="image-container oval">
-                        <img src="Pic 1.jpg" alt="Rangan Ghosh" class="profile-image">
-                        <div class="image-placeholder">
+                    <div class="image-container oval" aria-hidden="false">
+                        <img src="Pic 1.jpg" alt="Rangan Ghosh working on a laptop" class="profile-image" loading="lazy">
+                        <div class="image-placeholder" aria-hidden="true">
                             <i class="fas fa-user"></i>
                         </div>
                     </div>
                 </div>
                 <div class="about-text">
+                    <!--
+                      Kept paragraphs concise and considered microcopy hint like a "Read more" CTA that expands content
+                      for progressive disclosure on smaller screens.
+                    -->
                     <p>Hello! I'm Rangan, a passionate frontend developer with 3 years of experience creating responsive and user-friendly websites. I specialize in HTML, CSS, JavaScript, and React.</p>
                     <p>My approach combines technical expertise with an eye for design, ensuring that every project I work on is both functional and visually appealing.</p>
                     <p>When I'm not coding, you can find me exploring new design trends, contributing to open-source projects, or hiking in the mountains.</p>
@@ -94,94 +136,97 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <!-- Skills Section: progress bars animated via JavaScript -->
+    <section id="skills" class="skills" aria-labelledby="skills-title">
         <div class="container">
-            <h2 class="section-title">Skills & Expertise</h2>
+            <h2 id="skills-title" class="section-title">Skills & Expertise</h2>
             <div class="skills-grid">
+                <!-- Each skill block uses data-level for JS-driven animation. Kept numeric values 0-100. -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Frontend Development</h3>
+                    <h3><i class="fas fa-code" aria-hidden="true"></i> Frontend Development</h3>
                     <div class="skill-list">
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fab fa-html5"></i> HTML/CSS</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="95"></div>
+                            <span class="skill-name"><i class="fab fa-html5" aria-hidden="true"></i> HTML/CSS</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="95" role="presentation"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fab fa-js-square"></i> JavaScript</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="90"></div>
+                            <span class="skill-name"><i class="fab fa-js-square" aria-hidden="true"></i> JavaScript</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="90" role="presentation"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fab fa-react"></i> React</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="85"></div>
+                            <span class="skill-name"><i class="fab fa-react" aria-hidden="true"></i> React</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="20" role="presentation"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="95"></div>
+                            <span class="skill-name"><i class="fas fa-mobile-alt" aria-hidden="true"></i> Responsive Design</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="80" role="presentation"></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="skill-category">
-                    <h3><i class="fas fa-palette"></i> Design & Tools</h3>
+                    <h3><i class="fas fa-palette" aria-hidden="true"></i> Design & Tools</h3>
                     <div class="skill-list">
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fas fa-pencil-ruler"></i> UI/UX Design</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="80"></div>
+                            <span class="skill-name"><i class="fas fa-pencil-ruler" aria-hidden="true"></i> UI/UX Design</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="90" role="presentation"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fab fa-figma"></i> Figma</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="85"></div>
+                            <span class="skill-name"><i class="fab fa-figma" aria-hidden="true"></i> Figma</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="85" role="presentation"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fab fa-git-alt"></i> Git</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="90"></div>
+                            <span class="skill-name"><i class="fab fa-git-alt" aria-hidden="true"></i> Git</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="90" role="presentation"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fas fa-cube"></i> Webpack</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="75"></div>
+                            <span class="skill-name"><i class="fas fa-cube" aria-hidden="true"></i> Webpack</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="80" role="presentation"></div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="skill-category">
-                    <h3><i class="fas fa-laptop-code"></i> Programming Languages</h3>
+                    <h3><i class="fas fa-laptop-code" aria-hidden="true"></i> Programming Languages</h3>
                     <div class="skill-list">
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fab fa-java"></i> Java</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="80"></div>
+                            <span class="skill-name"><i class="fab fa-java" aria-hidden="true"></i> Java</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="90" role="presentation"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fab fa-python"></i> Python</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="75"></div>
+                            <span class="skill-name"><i class="fab fa-python" aria-hidden="true"></i> Python</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="80" role="presentation"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fas fa-copyright"></i> C++</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="70"></div>
+                            <span class="skill-name"><i class="fas fa-copyright" aria-hidden="true"></i> C++</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="80" role="presentation"></div>
                             </div>
                         </div>
                         <div class="skill-item">
-                            <span class="skill-name"><i class="fab fa-microsoft"></i> C#</span>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-level="65"></div>
+                            <span class="skill-name"><i class="fab fa-microsoft" aria-hidden="true"></i> C#</span>
+                            <div class="skill-bar" aria-hidden="true">
+                                <div class="skill-progress" data-level="75" role="presentation"></div>
                             </div>
                         </div>
                     </div>
@@ -191,10 +236,10 @@
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="education">
+    <section id="education" class="education" aria-labelledby="education-title">
         <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="timeline">
+            <h2 id="education-title" class="section-title">Education</h2>
+            <div class="timeline" aria-hidden="false">
                 <div class="timeline-item">
                     <div class="timeline-date">2022 - 2023</div>
                     <div class="timeline-content">
@@ -223,100 +268,103 @@
         </div>
     </section>
 
-    <!-- Work Section -->
-    <section id="work" class="work">
+    <!-- Projects Section -->
+    <section id="work" class="work" aria-labelledby="work-title">
         <div class="container">
-            <h2 class="section-title">My Projects</h2>
+            <h2 id="work-title" class="section-title">My Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
+                <div class="project-card" role="article" aria-labelledby="proj-ecom">
+                    <div class="project-image" aria-hidden="true">
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <div class="project-content">
-                        <h3>E-Commerce Website</h3>
+                        <h3 id="proj-ecom">E-Commerce Website</h3>
                         <p>A fully responsive e-commerce platform built with React and Node.js.</p>
-                        <div class="project-tech">
+                        <div class="project-tech" aria-hidden="true">
                             <span>React</span>
                             <span>Node.js</span>
                             <span>MongoDB</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="btn btn-outline" target="_blank" aria-label="View code on GitHub"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                            <a href="#" class="btn btn-primary" target="_blank" aria-label="Open live demo"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
+
+                <div class="project-card" role="article" aria-labelledby="proj-tasks">
+                    <div class="project-image" aria-hidden="true">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Task Management App</h3>
+                        <h3 id="proj-tasks">Task Management App</h3>
                         <p>A mobile-first task management application with drag-and-drop functionality.</p>
-                        <div class="project-tech">
+                        <div class="project-tech" aria-hidden="true">
                             <span>Vue.js</span>
                             <span>Firebase</span>
                             <span>CSS3</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="btn btn-outline" target="_blank" aria-label="View code on GitHub"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                            <a href="#" class="btn btn-primary" target="_blank" aria-label="Open live demo"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
+
+                <div class="project-card" role="article" aria-labelledby="proj-dashboard">
+                    <div class="project-image" aria-hidden="true">
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Analytics Dashboard</h3>
+                        <h3 id="proj-dashboard">Analytics Dashboard</h3>
                         <p>A data visualization dashboard for business metrics with interactive charts.</p>
-                        <div class="project-tech">
+                        <div class="project-tech" aria-hidden="true">
                             <span>JavaScript</span>
                             <span>D3.js</span>
                             <span>Python</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="btn btn-outline" target="_blank" aria-label="View code on GitHub"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                            <a href="#" class="btn btn-primary" target="_blank" aria-label="Open live demo"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
-                <!-- New Calculator Project -->
-                <div class="project-card">
-                    <div class="project-image">
+
+                <div class="project-card" role="article" aria-labelledby="proj-calc">
+                    <div class="project-image" aria-hidden="true">
                         <i class="fas fa-calculator"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Advanced Calculator</h3>
+                        <h3 id="proj-calc">Advanced Calculator</h3>
                         <p>A feature-rich calculator with scientific functions, history tracking, and responsive design.</p>
-                        <div class="project-tech">
+                        <div class="project-tech" aria-hidden="true">
                             <span>JavaScript</span>
                             <span>HTML5</span>
                             <span>CSS3</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="btn btn-outline" target="_blank" aria-label="View code on GitHub"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                            <a href="#" class="btn btn-primary" target="_blank" aria-label="Open live demo"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
-                <!-- New Photo Gallery Project -->
-                <div class="project-card">
-                    <div class="project-image">
+
+
+                <div class="project-card" role="article" aria-labelledby="proj-gallery">
+                    <div class="project-image" aria-hidden="true">
                         <i class="fas fa-images"></i>
                     </div>
                     <div class="project-content">
-                        <h3>Interactive Photo Gallery</h3>
+                        <h3 id="proj-gallery">Interactive Photo Gallery</h3>
                         <p>A responsive image gallery with filtering, lightbox preview, and smooth animations.</p>
-                        <div class="project-tech">
+                        <div class="project-tech" aria-hidden="true">
                             <span>JavaScript</span>
                             <span>CSS Grid</span>
                             <span>Lightbox</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn btn-outline"><i class="fab fa-github"></i> Code</a>
-                            <a href="#" class="btn btn-primary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="#" class="btn btn-outline" target="_blank" aria-label="View code on GitHub"><i class="fab fa-github" aria-hidden="true"></i> Code</a>
+                            <a href="#" class="btn btn-primary" target="_blank" aria-label="Open live demo"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Live Demo</a>
                         </div>
                     </div>
                 </div>
@@ -325,9 +373,9 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="experience">
+    <section id="experience" class="experience" aria-labelledby="exp-title">
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <h2 id="exp-title" class="section-title">Professional Experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-date">20XX - 20XX</div>
@@ -357,56 +405,64 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Contact Section: Should Consider server-side form handling or use a 3rd-party provider -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 id="contact-title" class="section-title">Get In Touch</h2>
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Contact Information</h3>
                     <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <span>ranganghosh777@gmail.com</span>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <span>+91 8240489519</span>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         <span>Kolkata, India</span>
                     </div>
-                    <div class="social-links">
-                        <a href="#" target="_blank" class="btn btn-social"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" target="_blank" class="btn btn-social"><i class="fab fa-github"></i></a>
-                        <a href="#" target="_blank" class="btn btn-social"><i class="fab fa-instagram"></i></a>
-                        <a href="#" target="_blank" class="btn btn-social"><i class="fab fa-facebook"></i></a>
+                    <div class="social-links" aria-label="Social links">
+                        <a href="https://www.linkedin.com/in/rangan-ghosh-595112369" target="_blank" class="btn btn-social" aria-label="LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="https://github.com/MrCoder240" target="_blank" class="btn btn-social" aria-label="GitHub profile"><i class="fab fa-github" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/lonelyboy5053?igsh=YTdhMGM4bWVuMnIy" target="_blank" class="btn btn-social" aria-label="Instagram profile"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61579821635956" target="_blank" class="btn btn-social" aria-label="Facebook profile"><i class="fab fa-facebook" aria-hidden="true"></i></a>
                     </div>
                 </div>
-                <form class="contact-form">
+
+                <!--
+                  Contact form:
+                  - Use name attributes and proper server-side or third-party processing.
+                  - Consider client-side validation & honeypot + rate-limiting to reduce spam.
+                  - Add aria-live region for validation feedback for screen readers.
+                -->
+                <form class="contact-form" method="post" action="#" novalidate aria-label="Contact form">
                     <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
+                        <input type="text" name="name" placeholder="Your Name" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
+                        <input type="email" name="email" placeholder="Your Email" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Subject" required>
+                        <input type="text" name="subject" placeholder="Subject" required aria-required="true">
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message" rows="10" required></textarea>
+                        <textarea name="message" placeholder="Your Message" rows="10" required aria-required="true"></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary btn-full">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div class="container">
             <p>&copy; 2025 Rangan Ghosh. All Rights Reserved.</p>
-            <div class="footer-links">
+            <div class="footer-links" aria-hidden="false">
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
@@ -417,56 +473,96 @@
     <!-- JavaScript for interactive elements -->
     <script>
           // Mobile menu toggle
+        // NOTE: For full accessibility, preferred using a <button> with aria-expanded and manage focus trapping for overlays.
         const hamburger = document.querySelector('.hamburger');
         const navMenu = document.querySelector('.nav-menu');
         
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+        // Guard clause in case elements are missing (prevents runtime errors)
+        if (hamburger && navMenu) {
+            // Should toggle the visual mobile menu by adding/removing the 'active' class
+            const toggleMenu = () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                // If using a <button>, should update aria-expanded here
+            };
+
+            // Click handler
+            hamburger.addEventListener('click', toggleMenu);
+
+            // Keyboard accessibility: allowed Enter/Space to toggle when hamburger has tabindex
+            hamburger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMenu();
+                }
+            });
+        }
         
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
+            if (hamburger && navMenu) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
         }));
         
         // Smooth scrolling for navigation links
+        // This enhances UX for hash links. The anchor check prevents '#' placeholder from blocking behavior.
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                // Allow external/target=_blank links to behave normally
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
+
+                // Prevents default only for same-document anchors
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+
+                    const targetId = href;
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        // Subtracted header height so the section isn't hidden beneath fixed header
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+
+                        // Move focus for accessibility after scrolling
+                        targetElement.setAttribute('tabindex', '-1');
+                        targetElement.focus({ preventScroll: true });
+                    }
                 }
             });
         });
         
-        // Animate skill bars when they come into view
+        // Animated skill bars when they come into view
+        // Uses getBoundingClientRect for a lightweight intersection check.
+        // For larger projects prefer IntersectionObserver for better perf.
         const skillBars = document.querySelectorAll('.skill-progress');
         
         const animateSkillBars = () => {
             skillBars.forEach(bar => {
-                const level = bar.getAttribute('data-level');
+                const level = bar.getAttribute('data-level') || 0;
                 const rect = bar.getBoundingClientRect();
                 
-                // If the skill bar is in the viewport
+                // If the skill bar is in the viewport, sets its width to the declared percentage
                 if(rect.top < window.innerHeight && rect.bottom >= 0) {
-                    bar.style.width = level + '%';
+                    // Clamp values between 0 and 100 for safety
+                    const safeLevel = Math.max(0, Math.min(100, Number(level)));
+                    bar.style.width = safeLevel + '%';
                 }
             });
         };
         
         // Initial check and then on scroll
+        // Debounce/throttle if we add heavier work inside the handler.
         animateSkillBars();
         window.addEventListener('scroll', animateSkillBars);
+        window.addEventListener('resize', animateSkillBars);
     </script>
 </body>
 </html>

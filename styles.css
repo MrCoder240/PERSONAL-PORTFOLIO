@@ -176,15 +176,28 @@ section {
 }
 
 /* Header and Navigation */
+/* =========================
+   GLASS NAVBAR
+========================= */
+
 .header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     z-index: 1000;
-    transition: var(--transition);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark mode glass */
+body.dark .header {
+    background: rgba(2, 6, 23, 0.65);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
 .header .container {
@@ -211,13 +224,44 @@ section {
     margin-left: 30px;
 }
 
+/* =========================
+   NAVBAR BUTTON LINKS
+========================= */
+
+.nav-menu {
+    background: transparent;
+}
+
 .nav-link {
+    padding: 8px 16px;
+    border-radius: 999px;
+    background-color: transparent;
     color: var(--secondary-color);
-    text-decoration: none;
     font-weight: 500;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     position: relative;
 }
+
+.nav-link::after {
+    content: none !important;
+}
+
+.nav-link:hover {
+    background-color: rgba(37, 99, 235, 0.15);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Dark mode navbar fix */
+body.dark .nav-link {
+    color: #e5e7eb;
+}
+
+body.dark .nav-link:hover {
+    background-color: rgba(96, 165, 250, 0.15);
+}
+
 
 .nav-link:hover {
     color: var(--primary-color);
@@ -522,56 +566,101 @@ section {
     margin-bottom: 40px;
     padding-left: 80px;
 }
+/* =========================
+   TIMELINE DOT
+========================= */
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 14px;
+    height: 14px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================
+   TIMELINE DATE BADGE
+========================= */
 
 .timeline-date {
     position: absolute;
-    left: 0;
+    left: -4px;
     top: 0;
-    width: 60px;
-    padding: 5px 10px;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 4px;
-    font-weight: 500;
+    width: 90px;
+    padding: 8px 0;
     text-align: center;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+
+    color: #fff;
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        #38bdf8
+    );
+
+    border-radius: 999px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
 }
 
+
+/* =========================
+   TIMELINE CONTENT CARD
+========================= */
+
 .timeline-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    padding: 28px;
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .timeline-content:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
 }
+/* =========================
+   TIMELINE TYPOGRAPHY
+========================= */
 
 .timeline-content h3 {
-    font-size: 1.3rem;
-    color: var(--secondary-color);
-    margin-bottom: 5px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 6px;
 }
 
 .timeline-content h4 {
-    font-size: 1.1rem;
-    color: var(--primary-color);
-    margin-bottom: 10px;
+    font-size: 1rem;
     font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 12px;
 }
 
-.timeline-content p, .timeline-content ul {
-    color: var(--gray-color);
-}
-
+.timeline-content p,
 .timeline-content ul {
-    padding-left: 20px;
+    font-size: 0.95rem;
+    line-height: 1.7;
 }
 
-.timeline-content li {
-    margin-bottom: 5px;
+
+/* Dark mode */
+body.dark .timeline-content {
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Work Section */
@@ -581,17 +670,30 @@ section {
     gap: 30px;
 }
 
+/* =========================
+   GLASS PROJECT CARDS
+========================= */
+
 .project-card {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode glass */
+body.dark .project-card {
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 
 .project-image {
@@ -604,6 +706,10 @@ section {
     font-size: 4rem;
     transition: var(--transition);
 }
+.project-image {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
 
 .project-card:hover .project-image {
     transform: scale(1.05);
@@ -652,10 +758,30 @@ section {
     gap: 50px;
 }
 
-.contact-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    color: var(--secondary-color);
+/* =========================
+   CONTACT INFO – GLASS CARD
+========================= */
+
+.contact-info {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-info:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
+}
+
+/* Dark mode */
+body.dark .contact-info {
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-item {
@@ -888,3 +1014,1203 @@ section {
         height: 25px;
     }
 }
+/* =========================
+   DARK THEME
+========================= */
+
+body.dark {
+    --primary-color: #60a5fa;      /* Softer blue */
+    --secondary-color: #e5e7eb;    /* Light text */
+    --accent-color: #fbbf24;
+    --light-color: #020617;        /* Dark background */
+    --dark-color: #e5e7eb;
+    --gray-color: #94a3b8;
+    --light-gray: #1e293b;
+    
+    background-color: #020617;
+    color: #e5e7eb;
+}
+body.dark .header {
+    background-color: rgba(2, 6, 23, 0.9);
+}
+
+body.dark .nav-menu,
+body.dark .timeline-content,
+body.dark .project-card,
+body.dark .contact-form,
+body.dark .contact-info,
+body.dark .project-tech span {
+    background-color: #020617;
+}
+
+body.dark .footer {
+    background-color: #020617;
+}
+/* =========================
+   THEME TOGGLE BUTTON
+========================= */
+
+.theme-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 52px;
+    height: 52px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    z-index: 2000;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1) rotate(10deg);
+    background-color: var(--accent-color);
+}
+
+.theme-toggle i {
+    font-size: 1.3rem;
+}
+body,
+.header,
+section,
+.project-card,
+.timeline-content {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =========================
+   HERO DARK MODE FIX
+========================= */
+
+body.dark .hero {
+    background: linear-gradient(
+        135deg,
+        #020617 0%,
+        #020617 40%,
+        #020617 100%
+    );
+}
+
+body.dark .hero-title,
+body.dark .hero-subtitle,
+body.dark .hero-description {
+    color: #e5e7eb;
+}
+/* =========================
+   SECTION SEPARATION (DARK)
+========================= */
+
+body.dark section:nth-of-type(odd) {
+    background-color: #020617;
+}
+
+body.dark section:nth-of-type(even) {
+    background-color: #020617;
+}
+
+body.dark section {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+/* =========================
+   DARK MODE – SECTION DEPTH
+========================= */
+
+body.dark section {
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Base dark section */
+body.dark section:nth-of-type(odd) {
+    background: linear-gradient(
+        180deg,
+        #020617 0%,
+        #020617 100%
+    );
+}
+
+/* Alternate section with depth */
+body.dark section:nth-of-type(even) {
+    background: linear-gradient(
+        180deg,
+        #020617 0%,
+        #020617 100%
+    );
+}
+
+/* Soft glow layer */
+body.dark section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top left,
+        rgba(96, 165, 250, 0.06),
+        transparent 55%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Ensure content stays above glow */
+body.dark section > .container {
+    position: relative;
+    z-index: 1;
+}
+/* =========================
+   FORCE REMOVE NAV UNDERLINE
+========================= */
+
+.nav-link,
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active,
+.nav-link:visited {
+    text-decoration: none !important;
+    border-bottom: none !important;
+}
+
+/* Kill any pseudo-element underline */
+.nav-link::after,
+.nav-link::before {
+    content: none !important;
+    display: none !important;
+}
+/* =========================
+   GLOBAL BACKGROUND EFFECT
+========================= */
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated gradient layer */
+
+
+/* Dark mode variant */
+body.dark::before {
+    background: linear-gradient(
+        120deg,
+        rgba(96, 165, 250, 0.08),
+        rgba(56, 189, 248, 0.08),
+        rgba(129, 140, 248, 0.08)
+    );
+}
+
+@keyframes gradientMove {
+    0% { transform: translate(0%, 0%) rotate(0deg); }
+    50% { transform: translate(20%, 10%) rotate(180deg); }
+    100% { transform: translate(0%, 0%) rotate(360deg); }
+}
+/* =========================
+   SECTION AMBIENT GLOW
+========================= */
+
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating light blob */
+section::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: -200px;
+    left: -200px;
+    background: radial-gradient(
+        circle,
+        rgba(37, 99, 235, 0.12),
+        transparent 60%
+    );
+    animation: floatGlow 18s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Dark mode glow */
+body.dark section::after {
+    background: radial-gradient(
+        circle,
+        rgba(96, 165, 250, 0.1),
+        transparent 60%
+    );
+}
+
+@keyframes floatGlow {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(120px, 80px); }
+    100% { transform: translate(0, 0); }
+}
+/* =========================
+   SECTION ENTRANCE EFFECT
+========================= */
+
+section {
+    animation: fadeUp 0.8s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =========================
+   LIGHT MODE TEXTURE
+========================= */
+
+body:not(.dark) {
+    background-color: #f8fafc;
+}
+
+body:not(.dark) section {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.85),
+        rgba(248, 250, 252, 0.9)
+    );
+}
+section:hover {
+    transition: transform 0.4s ease;
+}
+
+section:hover {
+    transform: translateY(-2px);
+}
+/* =========================
+   STRONG ANIMATED BACKGROUND
+========================= */
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* MAIN animated layer */
+/* =========================
+   PREMIUM ANIMATED BACKGROUND
+========================= */
+
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Layer 1: Large drifting color fields */
+/* =========================
+   CINEMATIC BACKGROUND SYSTEM
+========================= */
+
+/* =========================
+   CINEMATIC–TECH BACKGROUND
+========================= */
+
+body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: #f8fafc;
+}
+
+/* ===== LAYER 1: TECH COLOR FIELDS ===== */
+body::before {
+    content: "";
+    position: fixed;
+    inset: -55%;
+    background:
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(37, 99, 235, 0.6),
+            transparent 60%
+        ),
+        radial-gradient(
+            circle at 88% 28%,
+            rgba(14, 165, 233, 0.55),
+            transparent 60%
+        ),
+        radial-gradient(
+            circle at 50% 85%,
+            rgba(99, 102, 241, 0.6),
+            transparent 65%
+        );
+    animation: techDrift 42s ease-in-out infinite;
+    z-index: -5;
+}
+
+/* ===== DARK MODE TECH PALETTE ===== */
+body.dark {
+    background-color: #020617;
+}
+
+body.dark::before {
+    background:
+        radial-gradient(
+            circle at 12% 18%,
+            rgba(96, 165, 250, 0.5),
+            transparent 65%
+        ),
+        radial-gradient(
+            circle at 88% 28%,
+            rgba(56, 189, 248, 0.45),
+            transparent 65%
+        ),
+        radial-gradient(
+            circle at 50% 85%,
+            rgba(129, 140, 248, 0.5),
+            transparent 70%
+        );
+}
+
+/* ===== LAYER 2: CYAN ENERGY VEIL ===== */
+body::after {
+    content: "";
+    position: fixed;
+    inset: -65%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(56, 189, 248, 0.22),
+        transparent 72%
+    );
+    animation: techPulse 18s ease-in-out infinite alternate;
+    z-index: -6;
+}
+
+body.dark::after {
+    background: radial-gradient(
+        ellipse at center,
+        rgba(56, 189, 248, 0.12),
+        transparent 75%
+    );
+}
+
+/* ===== MOTION ===== */
+@keyframes techDrift {
+    0% {
+        transform: translate(0%, 0%) scale(1);
+    }
+    33% {
+        transform: translate(20%, -14%) scale(1.12);
+    }
+    66% {
+        transform: translate(-14%, 16%) scale(1.18);
+    }
+    100% {
+        transform: translate(0%, 0%) scale(1);
+    }
+}
+
+@keyframes techPulse {
+    from {
+        opacity: 0.65;
+    }
+    to {
+        opacity: 1;
+    }
+}
+header,
+section,
+footer {
+    position: relative;
+    z-index: 1;
+}
+/* =========================
+   CURSOR REACTIVE GLOW
+========================= */
+
+.cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 450px;
+    height: 450px;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(56, 189, 248, 0.35),
+        transparent 65%
+    );
+    transform: translate(-50%, -50%);
+    z-index: -2;
+    filter: blur(40px);
+    opacity: 0.8;
+}
+
+body.dark .cursor-glow {
+    background: radial-gradient(
+        circle,
+        rgba(96, 165, 250, 0.25),
+        transparent 70%
+    );
+}
+/* =========================
+   SECTION PARALLAX
+========================= */
+
+section {
+    will-change: transform;
+    transition: transform 0.1s linear;
+}
+/* =========================
+   FIX NAVBAR DARK PATCH
+========================= */
+
+/* Remove solid backgrounds under nav buttons */
+body.dark .nav-link {
+    background-color: transparent !important;
+}
+
+/* Hover effect using glow instead of fill */
+body.dark .nav-link:hover {
+    background-color: transparent !important;
+    box-shadow:
+        0 0 0 1px rgba(96, 165, 250, 0.35),
+        0 0 20px rgba(96, 165, 250, 0.25);
+}
+
+/* Prevent blur stacking artifacts */
+.header * {
+    background-clip: padding-box;
+}
+/* =========================
+   FIX CONTACT BOX DARK PATCH
+========================= */
+
+.contact-info {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 18px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Dark mode glass */
+body.dark .contact-info {
+    background: rgba(2, 6, 23, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* =========================
+   REMOVE STRAY SOLID LAYERS
+========================= */
+
+body.dark .nav-menu
+{
+    background: transparent !important;
+}
+/* =========================
+   GET IN TOUCH – SECTION
+========================= */
+
+.contact {
+    position: relative;
+    overflow: hidden;
+}
+
+/* soft tech glow */
+.contact::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top right,
+        rgba(56, 189, 248, 0.15),
+        transparent 60%
+    );
+    pointer-events: none;
+}
+
+body.dark .contact::before {
+    background: radial-gradient(
+        circle at top right,
+        rgba(96, 165, 250, 0.12),
+        transparent 65%
+    );
+}
+/* =========================
+   CONTACT ITEMS
+========================= */
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 0;
+    font-size: 1.05rem;
+}
+
+.contact-item i {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+body.dark .contact-item i {
+    background: rgba(96, 165, 250, 0.18);
+}
+/* =========================
+   CONTACT FORM – PRO STYLE
+========================= */
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+body.dark .contact-form {
+    background: rgba(2, 6, 23, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    padding: 14px 16px;
+}
+
+body.dark .contact-form input,
+body.dark .contact-form textarea {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e5e7eb;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+}
+/* =========================
+   CONTACT INFO HEADING
+========================= */
+
+.contact-info h3 {
+    font-size: 1.75rem;          /* bigger, but not dominant */
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 0.4px;
+    color: var(--secondary-color);
+}
+
+/* Dark mode tuning */
+body.dark .contact-info h3 {
+    color: #e5e7eb;
+}
+/* =========================
+   FORCE-CENTER CONTACT ICONS
+========================= */
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.contact-item i {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    line-height: 1;              /* critical for FA icons */
+    font-size: 1.2rem;
+
+    border-radius: 50%;
+    text-align: center;
+}
+/* =========================
+   SEND MESSAGE BUTTON
+========================= */
+
+.contact-form button {
+    display: inline-block;
+    width: 100%;
+    padding: 14px 28px;
+
+    font-family: var(--font-primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+
+    background-color: var(--primary-color);
+    color: #ffffff;
+
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Hover shine effect (same as primary buttons) */
+.contact-form button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.35),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+/* Hover animation */
+.contact-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.contact-form button:hover::before {
+    transform: translateX(100%);
+}
+
+/* Active state */
+.contact-form button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow);
+}
+/* =========================
+   SKILLS – CATEGORY CARDS
+========================= */
+
+.skill-category {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.18);
+}
+
+/* Dark mode */
+body.dark .skill-category {
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* =========================
+   SKILLS – HEADINGS
+========================= */
+
+.skill-category h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.skill-category h3 i {
+    font-size: 1.3rem;
+}
+/* =========================
+   SKILL ITEMS
+========================= */
+
+.skill-item {
+    margin-bottom: 22px;
+}
+
+.skill-name {
+    font-size: 1rem;
+    font-weight: 500;
+    justify-content: space-between;
+}
+/* =========================
+   SKILL BARS – ENHANCED
+========================= */
+
+.skill-bar {
+    height: 12px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+body.dark .skill-bar {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.skill-progress {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(
+        90deg,
+        var(--primary-color),
+        #38bdf8
+    );
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+    transition: width 1.6s ease-in-out;
+}
+/* =========================
+   SKILL HOVER POLISH
+========================= */
+
+.skill-item:hover .skill-name {
+    color: var(--primary-color);
+}
+
+.skill-item:hover .skill-progress {
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.8);
+}
+/* =========================
+   TIMELINE – CORE STRUCTURE
+========================= */
+
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 40px;
+}
+
+/* Vertical spine */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+    border-radius: 10px;
+}
+/* =========================
+   TIMELINE ITEMS
+========================= */
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+    padding-left: 40px;
+}
+@media (max-width: 768px) {
+    .timeline {
+        padding-left: 30px;
+    }
+
+    .timeline-date {
+        width: 70px;
+        font-size: 0.75rem;
+    }
+}
+/* =========================
+   TIMELINE LAYER FIX
+========================= */
+
+/* Ensure timeline establishes stacking context */
+.timeline {
+    position: relative;
+    z-index: 1;
+}
+
+/* Year badge ALWAYS on top */
+.timeline-date {
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Timeline dot sits below year but above line */
+.timeline-item::before {
+    z-index: 3;
+}
+
+/* Content card stays below badge */
+.timeline-content {
+    position: relative;
+    z-index: 2;
+}
+/* =========================
+   UNIFIED TIMELINE CARD
+========================= */
+
+.timeline {
+    position: relative;
+    padding-left: 60px;
+}
+
+/* Timeline spine */
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        var(--primary-color),
+        transparent
+    );
+}
+
+/* Timeline item */
+.timeline-item {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+/* Prominent timeline dot */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 13px;
+    top: 28px;
+    width: 16px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 0 6px rgba(37, 99, 235, 0.25),
+        0 0 18px rgba(56, 189, 248, 0.8);
+    z-index: 2;
+}
+/* =========================
+   DATE INSIDE CARD
+========================= */
+
+.timeline-date {
+    position: static;
+    display: inline-block;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+
+    padding: 6px 14px;
+    margin-bottom: 14px;
+
+    color: #fff;
+    background: linear-gradient(
+        135deg,
+        var(--primary-color),
+        #38bdf8
+    );
+
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+/* =========================
+   TIMELINE CONTENT CARD
+========================= */
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    padding: 26px 28px;
+    border-radius: 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Hover lift (safe, no stacking bugs) */
+.timeline-content:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode */
+body.dark .timeline-content {
+    background: rgba(2, 6, 23, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* =========================
+   TIMELINE SCROLL REVEAL
+========================= */
+
+.timeline-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.timeline-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* =========================
+   FOOTER NAV BUTTONS
+========================= */
+
+.footer-links a {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 999px;
+
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+
+    text-decoration: none;
+    color: #ffffff;
+
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect – same language as navbar */
+.footer-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+/* Dark mode fine-tuning */
+body.dark .footer-links a:hover {
+    background: rgba(96, 165, 250, 0.18);
+    box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.4);
+}
+
+/* =========================
+   FILM GRAIN OVERLAY
+========================= */
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+    opacity: 0.035;
+}
+.timeline::before { /* spine */ }
+.timeline-item::before { /* dot */ }
+.timeline-item.show { /* scroll reveal */ }
+/* =========================
+   AUTO-CENTER LAST ROW CARDS
+========================= */
+
+/* SKILLS SECTION */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+}
+
+/* PROJECTS SECTION */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+}
+
+/* Ensure cards don’t stretch awkwardly */
+.skill-category,
+.project-card {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width: 1200px) {
+    .skills-grid,
+    .projects-grid {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* =========================
+   CENTER GAME DEV SKILL CARD
+========================= */
+
+.skills-grid > .skill-category:last-child {
+    grid-column: 1 / -1;   /* span full row */
+    justify-self: center;  /* center the card */
+    max-width: 420px;
+}
+/* =========================
+   CENTER LAST TWO PROJECTS
+========================= */
+
+.projects-grid > .project-card:nth-last-child(1),
+.projects-grid > .project-card:nth-last-child(2) {
+    justify-self: center;
+    max-width: 420px;
+}
+@media (max-width: 768px) {
+    .skills-grid > .skill-category:last-child,
+    .projects-grid > .project-card:nth-last-child(1),
+    .projects-grid > .project-card:nth-last-child(2) {
+        grid-column: auto;
+        max-width: 100%;
+    }
+}
+/* =========================
+   PIXELATED HERO NAME
+========================= */
+
+.hero-title {
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 0.5px;   /* tight spacing for pixel font */
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    /* Pixel clarity */
+    image-rendering: pixelated;
+}
+body.dark .hero-title {
+    text-shadow:
+        0 0 6px rgba(96, 165, 250, 0.6),
+        0 0 12px rgba(96, 165, 250, 0.4);
+}
+/* =========================
+   PIXEL BRAND TEXT
+========================= */
+
+.brand-link span {
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 0.4px;   /* tight for pixel font */
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+@media (max-width: 768px) {
+    .brand-link span {
+        font-size: 0.9rem;
+    }
+}
+/* =========================
+   PIXEL SECTION HEADINGS
+========================= */
+
+.section-title {
+    font-family: 'Press Start 2P', monospace;
+    letter-spacing: 0.6px;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 1.4rem;
+        letter-spacing: 0.4px;
+    }
+}
+body.dark .section-title {
+    text-shadow:
+        0 0 6px rgba(96, 165, 250, 0.5),
+        0 0 14px rgba(96, 165, 250, 0.35);
+}
+/* =========================
+   REMOVE SECTION UNDERLINE
+========================= */
+
+.section-title::after {
+    content: none !important;
+}
+/* =========================
+   SECTION TITLE HOVER EFFECT
+========================= */
+
+.section-title {
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+    cursor: default;
+}
+
+.section-title:hover {
+    transform: translateY(-3px);
+}
+
+/* Dark mode pixel glow */
+body.dark .section-title:hover {
+    text-shadow:
+        0 0 6px rgba(96, 165, 250, 0.6),
+        0 0 14px rgba(96, 165, 250, 0.4);
+}
+
+/* Light mode subtle emphasis */
+body:not(.dark) .section-title:hover {
+    text-shadow:
+        0 0 6px rgba(37, 99, 235, 0.35);
+}
+/* =========================
+   REMOVE SECTION SEPARATOR LINE
+========================= */
+
+section::before {
+    content: none !important;
+}
+/* =========================
+   FORCE REMOVE SECTION SEPARATOR
+========================= */
+/* Emergency border cleanup */
+.education,
+.skills,
+.experience,
+.projects,
+.contact {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+/* =========================
+   FIX SECTION GAP ISSUE
+========================= */
+
+/* Prevent margin stacking at section boundaries */
+.section-title {
+    margin-top: 0;
+}
+section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    margin: 0;
+}
+.education {
+    padding-bottom: 80px;
+}
+
+.education .timeline {
+    margin-bottom: 0;
+}
+
+

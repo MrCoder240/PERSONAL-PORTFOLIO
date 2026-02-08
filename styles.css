@@ -163,6 +163,7 @@ section {
     background-color: var(--light-color);
     color: var(--primary-color);
     transition: var(--transition);
+    text-decoration: none;
 }
 
 .btn-social:hover {
